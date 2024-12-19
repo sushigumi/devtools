@@ -1,0 +1,1 @@
+ubuntu:latest requires `git`, `neovim`
