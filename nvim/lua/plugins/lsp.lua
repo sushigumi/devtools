@@ -30,7 +30,7 @@ return {
 
           local clients = get_lsp_clients({ bufnr = buffer })
           for _, client in ipairs(clients) do
-            for _, spec in pairs(keys[client.name]) do
+            for _, spec in pairs(keys[client.name] or {}) do
               vim.keymap.set(spec.mode or "n", spec[1], spec[2], bufopts)
             end
           end
@@ -59,7 +59,8 @@ return {
           }
         },
         servers = {
-          "clangd"
+          "clangd",
+          "gopls",
         },
       }
     end,
@@ -76,7 +77,9 @@ return {
       end
 
       for _, server in ipairs(opts.servers) do
-        setup(server)
+        if _G.lspenable[server] then
+          setup(server)
+        end
       end
     end
   },

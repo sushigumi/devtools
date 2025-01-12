@@ -1,3 +1,9 @@
+local lspenable = {
+  clangd = true,
+  gopls = true,
+}
+
 require("config.lazy").setup({
-    { import = "plugins" },
+    lazy = { import = "plugins" },
+    lspenable = lspenable,
 })

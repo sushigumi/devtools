@@ -22,3 +22,5 @@ map("n", "]e", diagnostic_goto(true, "ERROR"), { noremap = true, silent = true, 
 map("n", "[e", diagnostic_goto(false, "ERROR"), { noremap = true, silent = true, desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(true, "WARN"), { noremap = true, silent = true, desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { noremap = true, silent = true, desc = "Prev Warning" })
+
+vim.api.nvim_create_user_command('W', 'write', {})

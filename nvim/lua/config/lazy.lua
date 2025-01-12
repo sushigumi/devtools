@@ -1,7 +1,5 @@
 local M = {}
 
-_G.LazyConfig = M
-
 function M.setup(spec)
   -- Bootstrap lazy.nvim
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -26,14 +24,19 @@ function M.setup(spec)
 
   -- Setup lazy.nvim
   require("lazy").setup({
-    spec = spec,
+    spec = spec.lazy,
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { "habamax" } },
+    install = { colorscheme = { "tokyonight" } },
   })
+
+  vim.cmd.colorscheme("tokyonight")
 
   -- Setup keymaps
   require("config.keymaps")
+
+  -- Enhance the global variables with additional configuration defined in the spec.
+  _G.lspenable = spec.lspenable
 end
 
 return M
